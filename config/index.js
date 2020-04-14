@@ -17,8 +17,8 @@ const GOOGLE = {
   clientSecret: "VWj5QkVb2dVwdZAksWBLKYLy",
 };
 const INSTAGRAM = {
-  clientID: "0d517fd22d63445181091e63578caf92",
-  clientSecret: "3ea8588c8f7f43ebb4ff89fd5519b1fc",
+  clientID: "226132105467173",
+  clientSecret: "2ba141c9940dbb27d9a6cf72bb52881c",
 };
 const SPOTIFY = {
   clientID: "2ab04beb997b4e75bede51e1caed6ffc",
