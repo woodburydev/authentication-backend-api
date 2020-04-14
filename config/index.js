@@ -21,8 +21,8 @@ const INSTAGRAM = {
   clientSecret: "2ba141c9940dbb27d9a6cf72bb52881c",
 };
 const SPOTIFY = {
-  clientID: "2ab04beb997b4e75bede51e1caed6ffc",
-  clientSecret: "27d00d3b6dcb4ac2af1fa6f64cd0ce74",
+  clientID: "85f6e216ca974365899a67ac0053e20c",
+  clientSecret: "ec22a3ce604b45e68d736ca463eb853c",
 };
 const TWITCH = {
   clientID: "3bim2h9k5ht5jfyktqpuqiasdexg27",
