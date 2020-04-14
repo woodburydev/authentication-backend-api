@@ -198,7 +198,7 @@ app.get(
 app.get("/auth/instagram", passport.authenticate("instagram"));
 app.get(
   "/auth/instagram/callback",
-  passport.authenticate("instagram"),
+  passport.authenticate("instagram", { scope: ["basic"] }),
   (req, res) => {
     res.redirect("http://localhost:3000/profile");
   }
