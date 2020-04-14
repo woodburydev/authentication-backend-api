@@ -48,7 +48,8 @@ passport.use(
     {
       clientID: keys.AMAZON.clientID,
       clientSecret: keys.AMAZON.clientSecret,
-      callbackURL: "/auth/amazon/callback",
+      callbackURL:
+        "https://react-authentication-backend.herokuapp.com/auth/amazon/callback",
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
