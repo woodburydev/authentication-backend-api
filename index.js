@@ -230,6 +230,6 @@ app.get("/user", (req, res) => {
 app.get("/auth/logout", (req, res) => {
   console.log("logging out!");
   user = {};
-  res.redirect("/");
+  res.redirect("http://localhost:3000");
 });
 app.listen(process.env.PORT || 5000);
