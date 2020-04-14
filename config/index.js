@@ -25,8 +25,8 @@ const SPOTIFY = {
   clientSecret: "ec22a3ce604b45e68d736ca463eb853c",
 };
 const TWITCH = {
-  clientID: "3bim2h9k5ht5jfyktqpuqiasdexg27",
-  clientSecret: "bz4tt9sztacz4sd8qx8rg8imqbsjjn",
+  clientID: "5gw197kazjaks2q3lbwqvt73hvidoi",
+  clientSecret: "lynn649hsi2n8sjcb22jaeadeaw8lq",
 };
 
 module.exports = {
