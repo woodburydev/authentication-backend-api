@@ -66,7 +66,8 @@ passport.use(
     {
       clientID: keys.GITHUB.clientID,
       clientSecret: keys.GITHUB.clientSecret,
-      callbackURL: "/auth/github/callback",
+      callbackURL:
+        "https://react-authentication-backend.herokuapp.com/auth/github/callback",
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
@@ -82,7 +83,8 @@ passport.use(
     {
       clientID: keys.GOOGLE.clientID,
       clientSecret: keys.GOOGLE.clientSecret,
-      callbackURL: "/auth/google/callback",
+      callbackURL:
+        "https://react-authentication-backend.herokuapp.com/auth/google/callback",
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
@@ -98,7 +100,8 @@ passport.use(
     {
       clientID: keys.INSTAGRAM.clientID,
       clientSecret: keys.INSTAGRAM.clientSecret,
-      callbackURL: "/auth/instagram/callback",
+      callbackURL:
+        "https://react-authentication-backend.herokuapp.com/auth/instagram/callback",
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
@@ -114,7 +117,8 @@ passport.use(
     {
       clientID: keys.SPOTIFY.clientID,
       clientSecret: keys.SPOTIFY.clientSecret,
-      callbackURL: "/auth/spotify/callback",
+      callbackURL:
+        "https://react-authentication-backend.herokuapp.com/auth/spotify/callback",
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
@@ -130,7 +134,8 @@ passport.use(
     {
       clientID: keys.TWITCH.clientID,
       clientSecret: keys.TWITCH.clientSecret,
-      callbackURL: "/auth/twitch/callback",
+      callbackURL:
+        "https://react-authentication-backend.herokuapp.com/auth/twitch/callback",
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
