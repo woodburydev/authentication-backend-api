@@ -154,7 +154,7 @@ app.get(
   "/auth/facebook/callback",
   passport.authenticate("facebook"),
   (req, res) => {
-    res.redirect("/profile");
+    res.redirect("http://localhost:3000/profile");
   }
 );
 
@@ -168,7 +168,7 @@ app.get(
   "/auth/amazon/callback",
   passport.authenticate("amazon"),
   (req, res) => {
-    res.redirect("/profile");
+    res.redirect("http://localhost:3000/profile");
   }
 );
 
@@ -177,7 +177,7 @@ app.get(
   "/auth/github/callback",
   passport.authenticate("github"),
   (req, res) => {
-    res.redirect("/profile");
+    res.redirect("http://localhost:3000/profile");
   }
 );
 
@@ -191,7 +191,7 @@ app.get(
   "/auth/google/callback",
   passport.authenticate("google"),
   (req, res) => {
-    res.redirect("/profile");
+    res.redirect("http://localhost:3000/profile");
   }
 );
 
@@ -200,7 +200,7 @@ app.get(
   "/auth/instagram/callback",
   passport.authenticate("instagram"),
   (req, res) => {
-    res.redirect("/profile");
+    res.redirect("http://localhost:3000/profile");
   }
 );
 
@@ -209,7 +209,7 @@ app.get(
   "/auth/spotify/callback",
   passport.authenticate("spotify"),
   (req, res) => {
-    res.redirect("/profile");
+    res.redirect("http://localhost:3000/profile");
   }
 );
 
@@ -218,7 +218,7 @@ app.get(
   "/auth/twitch/callback",
   passport.authenticate("twitch.js"),
   (req, res) => {
-    res.redirect("/profile");
+    res.redirect("http://localhost:3000/profile");
   }
 );
 
