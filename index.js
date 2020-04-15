@@ -4,7 +4,7 @@ const path = require("path");
 const fs = require("fs");
 const http = require("http");
 const https = require("https");
-
+const localStorage = require("localStorage");
 const passport = require("passport");
 const FacebookStrategy = require("passport-facebook").Strategy;
 const AmazonStrategy = require("passport-amazon").Strategy;
@@ -88,7 +88,8 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
-      user = { ...profile };
+      let user = { ...profile };
+      localStorage.setItem("user", user);
       return cb(null, profile);
     }
   )
