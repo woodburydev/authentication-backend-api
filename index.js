@@ -36,7 +36,7 @@ passport.use(
     async (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
       let newProfile = { ...profile };
-      await localStorage.setItem("data", newProfile);
+      await sessionStorage.setItem("data", newProfile);
       return cb(null, profile);
     }
   )
@@ -54,7 +54,7 @@ passport.use(
     async (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
       let newProfile = { ...profile };
-      localStorage.setItem("data", newProfile);
+      sessionStorage.setItem("data", newProfile);
       return cb(null, profile);
     }
   )
@@ -72,7 +72,7 @@ passport.use(
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
       let newProfile = { ...profile };
-      localStorage.setItem("data", newProfile);
+      sessionStorage.setItem("data", newProfile);
       return cb(null, profile);
     }
   )
@@ -90,7 +90,7 @@ passport.use(
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
       let newProfile = { ...profile };
-      localStorage.setItem("data", newProfile);
+      sessionStorage.setItem("data", newProfile);
       return cb(null, profile);
     }
   )
@@ -108,7 +108,7 @@ passport.use(
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
       let newProfile = { ...profile };
-      localStorage.setItem("data", newProfile);
+      sessionStorage.setItem("data", newProfile);
       return cb(null, profile);
     }
   )
@@ -126,7 +126,7 @@ passport.use(
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
       let newProfile = { ...profile };
-      localStorage.setItem("data", newProfile);
+      sessionStorage.setItem("data", newProfile);
       return cb(null, profile);
     }
   )
@@ -144,7 +144,7 @@ passport.use(
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
       let newProfile = { ...profile };
-      localStorage.setItem("data", newProfile);
+      sessionStorage.setItem("data", newProfile);
       return cb(null, profile);
     }
   )
@@ -229,13 +229,13 @@ app.get(
 
 app.get("/user", async (req, res) => {
   console.log("getting user data!");
-  const data = localStorage.getItem("data");
+  const data = sessionStorage.getItem("data");
   res.send(data);
 });
 
 app.get("/auth/logout", (req, res) => {
   console.log("logging out!");
-  localStorage.setItem("data", []);
+  sessionStorage.setItem("data", []);
   res.redirect("https://authentication-app-client.herokuapp.com/");
 });
 app.listen(process.env.PORT || 5000);
