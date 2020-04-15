@@ -16,8 +16,6 @@ const TwitchStrategy = require("passport-twitch.js").Strategy;
 const keys = require("./config");
 const chalk = require("chalk");
 
-let user = {};
-
 passport.serializeUser((user, cb) => {
   cb(null, user);
 });
@@ -35,9 +33,10 @@ passport.use(
       callbackURL:
         "https://react-authentication-backend.herokuapp.com/auth/facebook/callback",
     },
-    (accessToken, refreshToken, profile, cb) => {
+    async (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
-      localStorage.setItem("data", { ...profile });
+      let newProfile = { ...profile };
+      await localStorage.setItem("data", newProfile);
       return cb(null, profile);
     }
   )
@@ -52,9 +51,10 @@ passport.use(
       callbackURL:
         "https://react-authentication-backend.herokuapp.com/auth/amazon/callback",
     },
-    (accessToken, refreshToken, profile, cb) => {
+    async (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
-      localStorage.setItem("data", { ...profile });
+      let newProfile = { ...profile };
+      localStorage.setItem("data", newProfile);
       return cb(null, profile);
     }
   )
@@ -71,7 +71,8 @@ passport.use(
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
-      localStorage.setItem("data", { ...profile });
+      let newProfile = { ...profile };
+      localStorage.setItem("data", newProfile);
       return cb(null, profile);
     }
   )
@@ -88,7 +89,8 @@ passport.use(
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
-      localStorage.setItem("data", { ...profile });
+      let newProfile = { ...profile };
+      localStorage.setItem("data", newProfile);
       return cb(null, profile);
     }
   )
@@ -105,7 +107,8 @@ passport.use(
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
-      localStorage.setItem("data", { ...profile });
+      let newProfile = { ...profile };
+      localStorage.setItem("data", newProfile);
       return cb(null, profile);
     }
   )
@@ -122,7 +125,8 @@ passport.use(
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
-      localStorage.setItem("data", { ...profile });
+      let newProfile = { ...profile };
+      localStorage.setItem("data", newProfile);
       return cb(null, profile);
     }
   )
@@ -139,7 +143,8 @@ passport.use(
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
-      localStorage.setItem("data", { ...profile });
+      let newProfile = { ...profile };
+      localStorage.setItem("data", newProfile);
       return cb(null, profile);
     }
   )
