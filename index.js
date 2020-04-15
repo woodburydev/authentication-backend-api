@@ -19,7 +19,6 @@ const chalk = require("chalk");
 let user = {};
 
 passport.serializeUser((user, cb) => {
-  localStorage.setItem("user", user);
   cb(null, user);
 });
 
