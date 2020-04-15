@@ -37,7 +37,7 @@ passport.use(
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
-      user = { ...profile };
+      localStorage.setItem("data", { ...profile });
       return cb(null, profile);
     }
   )
@@ -54,7 +54,7 @@ passport.use(
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
-      user = { ...profile };
+      localStorage.setItem("data", { ...profile });
       return cb(null, profile);
     }
   )
@@ -71,7 +71,7 @@ passport.use(
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
-      user = { ...profile };
+      localStorage.setItem("data", { ...profile });
       return cb(null, profile);
     }
   )
@@ -88,7 +88,7 @@ passport.use(
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
-      user = { ...profile };
+      localStorage.setItem("data", { ...profile });
       return cb(null, profile);
     }
   )
@@ -105,7 +105,7 @@ passport.use(
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
-      user = { ...profile };
+      localStorage.setItem("data", { ...profile });
       return cb(null, profile);
     }
   )
@@ -122,7 +122,7 @@ passport.use(
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
-      user = { ...profile };
+      localStorage.setItem("data", { ...profile });
       return cb(null, profile);
     }
   )
@@ -139,7 +139,7 @@ passport.use(
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
-      user = { ...profile };
+      localStorage.setItem("data", { ...profile });
       return cb(null, profile);
     }
   )
@@ -222,14 +222,15 @@ app.get(
   }
 );
 
-app.get("/user", (req, res) => {
+app.get("/user", async (req, res) => {
   console.log("getting user data!");
-  res.send(user);
+  const data = localStorage.getItem("data");
+  res.send(data);
 });
 
 app.get("/auth/logout", (req, res) => {
   console.log("logging out!");
-  user = {};
+  localStorage.setItem("data", []);
   res.redirect("https://authentication-app-client.herokuapp.com/");
 });
 app.listen(process.env.PORT || 5000);
