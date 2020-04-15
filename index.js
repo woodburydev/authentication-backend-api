@@ -19,6 +19,7 @@ const chalk = require("chalk");
 let user = {};
 
 passport.serializeUser((user, cb) => {
+  localStorage.setItem("user", user);
   cb(null, user);
 });
 
@@ -88,9 +89,7 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
-      let user;
       user = { ...profile };
-      await sessionStorage.setItem("user", user);
       return cb(null, profile);
     }
   )
