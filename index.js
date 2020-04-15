@@ -16,7 +16,7 @@ const SpotifyStrategy = require("passport-spotify").Strategy;
 const TwitchStrategy = require("passport-twitch.js").Strategy;
 const keys = require("./config");
 const chalk = require("chalk");
-
+const app = express();
 let user = {};
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -148,7 +148,6 @@ passport.use(
   )
 );
 
-const app = express();
 app.use(cors());
 app.use(passport.initialize());
 app.use(passport.session());
