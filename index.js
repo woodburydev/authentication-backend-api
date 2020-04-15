@@ -226,8 +226,8 @@ app.get(
 );
 
 app.get("/user", (req, res) => {
-  console.log(req.user);
-  res.send(req.user);
+  console.log({ ...req.user });
+  res.send({ ...req.user });
 });
 
 app.get("/auth/logout", (req, res) => {
