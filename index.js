@@ -4,8 +4,7 @@ const path = require("path");
 const fs = require("fs");
 const http = require("http");
 const https = require("https");
-const session = require("express-session");
-const bodyParser = require("body-parser");
+
 const passport = require("passport");
 const FacebookStrategy = require("passport-facebook").Strategy;
 const AmazonStrategy = require("passport-amazon").Strategy;
@@ -16,11 +15,9 @@ const SpotifyStrategy = require("passport-spotify").Strategy;
 const TwitchStrategy = require("passport-twitch.js").Strategy;
 const keys = require("./config");
 const chalk = require("chalk");
-const app = express();
+
 let user = {};
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(session({ secret: "cats" }));
 passport.serializeUser((user, cb) => {
   cb(null, user);
 });
@@ -89,7 +86,7 @@ passport.use(
       callbackURL:
         "https://react-authentication-backend.herokuapp.com/auth/google/callback",
     },
-    async (accessToken, refreshToken, profile, cb) => {
+    (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
       user = { ...profile };
       return cb(null, profile);
@@ -148,9 +145,9 @@ passport.use(
   )
 );
 
+const app = express();
 app.use(cors());
 app.use(passport.initialize());
-app.use(passport.session());
 
 app.get("/auth/facebook", passport.authenticate("facebook"));
 app.get(
@@ -226,8 +223,8 @@ app.get(
 );
 
 app.get("/user", (req, res) => {
-  console.log({ ...req.user });
-  res.send({ ...req.user });
+  console.log("getting user data!");
+  res.send(user);
 });
 
 app.get("/auth/logout", (req, res) => {
