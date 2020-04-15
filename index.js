@@ -16,6 +16,8 @@ const TwitchStrategy = require("passport-twitch.js").Strategy;
 const keys = require("./config");
 const chalk = require("chalk");
 
+let user = {};
+
 passport.serializeUser((user, cb) => {
   cb(null, user);
 });
@@ -33,10 +35,9 @@ passport.use(
       callbackURL:
         "https://react-authentication-backend.herokuapp.com/auth/facebook/callback",
     },
-    async (accessToken, refreshToken, profile, cb) => {
+    (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
-      let newProfile = { ...profile };
-      await sessionStorage.setItem("data", newProfile);
+      user = { ...profile };
       return cb(null, profile);
     }
   )
@@ -51,10 +52,9 @@ passport.use(
       callbackURL:
         "https://react-authentication-backend.herokuapp.com/auth/amazon/callback",
     },
-    async (accessToken, refreshToken, profile, cb) => {
+    (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
-      let newProfile = { ...profile };
-      sessionStorage.setItem("data", newProfile);
+      user = { ...profile };
       return cb(null, profile);
     }
   )
@@ -71,8 +71,7 @@ passport.use(
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
-      let newProfile = { ...profile };
-      sessionStorage.setItem("data", newProfile);
+      user = { ...profile };
       return cb(null, profile);
     }
   )
@@ -87,10 +86,11 @@ passport.use(
       callbackURL:
         "https://react-authentication-backend.herokuapp.com/auth/google/callback",
     },
-    (accessToken, refreshToken, profile, cb) => {
+    async (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
-      let newProfile = { ...profile };
-      sessionStorage.setItem("data", newProfile);
+      let user;
+      user = { ...profile };
+      await sessionStorage.setItem("user", user);
       return cb(null, profile);
     }
   )
@@ -107,8 +107,7 @@ passport.use(
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
-      let newProfile = { ...profile };
-      sessionStorage.setItem("data", newProfile);
+      user = { ...profile };
       return cb(null, profile);
     }
   )
@@ -125,8 +124,7 @@ passport.use(
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
-      let newProfile = { ...profile };
-      sessionStorage.setItem("data", newProfile);
+      user = { ...profile };
       return cb(null, profile);
     }
   )
@@ -143,8 +141,7 @@ passport.use(
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
-      let newProfile = { ...profile };
-      sessionStorage.setItem("data", newProfile);
+      user = { ...profile };
       return cb(null, profile);
     }
   )
@@ -227,15 +224,14 @@ app.get(
   }
 );
 
-app.get("/user", async (req, res) => {
+app.get("/user", (req, res) => {
   console.log("getting user data!");
-  const data = sessionStorage.getItem("data");
-  res.send(data);
+  res.send(user);
 });
 
 app.get("/auth/logout", (req, res) => {
   console.log("logging out!");
-  sessionStorage.setItem("data", []);
+  user = {};
   res.redirect("https://authentication-app-client.herokuapp.com/");
 });
 app.listen(process.env.PORT || 5000);
