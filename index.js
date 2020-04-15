@@ -4,7 +4,8 @@ const path = require("path");
 const fs = require("fs");
 const http = require("http");
 const https = require("https");
-const localStorage = require("localStorage");
+const session = require("express-session");
+const bodyParser = require("body-parser");
 const passport = require("passport");
 const FacebookStrategy = require("passport-facebook").Strategy;
 const AmazonStrategy = require("passport-amazon").Strategy;
@@ -18,6 +19,8 @@ const chalk = require("chalk");
 
 let user = {};
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session({ secret: "cats" }));
 passport.serializeUser((user, cb) => {
   cb(null, user);
 });
@@ -88,8 +91,7 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
-      let user = { ...profile };
-      localStorage.setItem("user", user);
+      user = { ...profile };
       return cb(null, profile);
     }
   )
@@ -149,6 +151,7 @@ passport.use(
 const app = express();
 app.use(cors());
 app.use(passport.initialize());
+app.use(passport.session());
 
 app.get("/auth/facebook", passport.authenticate("facebook"));
 app.get(
@@ -224,8 +227,8 @@ app.get(
 );
 
 app.get("/user", (req, res) => {
-  console.log("getting user data!");
-  res.send(localStorage.getItem("user"));
+  console.log(req.user);
+  res.send(req.user);
 });
 
 app.get("/auth/logout", (req, res) => {
