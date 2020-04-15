@@ -225,7 +225,7 @@ app.get(
 
 app.get("/user", (req, res) => {
   console.log("getting user data!");
-  res.send(user);
+  res.send(localStorage.getItem("user"));
 });
 
 app.get("/auth/logout", (req, res) => {
